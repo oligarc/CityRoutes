@@ -62,8 +62,18 @@ public class ControllerAdmin extends HttpServlet {
         	ArrayList<Ruta> listaRutas = new ArrayList<Ruta>();
         	listaRutas = daoRuta.listaRutasPorIdCiudad(idCiudadParaRuta);
         	String nombreCiudadAPasar = daoRuta.nombreCiudad(idCiudadParaRuta);
-        	request.setAttribute("nombreCiudad", nombreCiudadAPasar);
-        	request.setAttribute("listadoRutas", listaRutas);
+        	
+        	for (Ruta ruta : listaRutas) {
+				int sumaPuntos = daoPunto.obtenerSumaPuntos(ruta.getId());
+				int sumaVeces = daoPunto.contarParaMedia(ruta.getId());
+				double media = (double) sumaPuntos/sumaVeces;
+				media = Math.round(media);
+				ruta.setMediaPuntuacion(media);
+			}
+        	
+        	session.setAttribute("opcionRuta",idCiudadParaRuta);
+        	session.setAttribute("nombreCiudad", nombreCiudadAPasar);
+        	session.setAttribute("listadoRutas", listaRutas);
         	request.getRequestDispatcher("ruta.jsp").forward(request, response);
         	
         	break;
@@ -72,9 +82,7 @@ public class ControllerAdmin extends HttpServlet {
         	
         	int puntosInsercion = Integer.parseInt(request.getParameter("puntos"));
         	int idRutaInsercion = Integer.parseInt(request.getParameter("idRuta"));
-        	
         	daoPunto.addPuntuacion(idRutaInsercion, puntosInsercion);
-        	
         	request.getRequestDispatcher("ruta.jsp").forward(request, response);
         	
         	break;

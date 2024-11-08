@@ -31,6 +31,11 @@ public class TestDaoRuta {
 		
 		String nombreCiudad = daoRuta.nombreCiudad(2);
 		System.out.println(nombreCiudad);
+		
+		listaRutas = daoRuta.listaRutasPorIdCiudad(4);
+		for (Ruta ruta : listaRutas) {
+			System.out.println(ruta.toString());
+		}
 
 	}
 

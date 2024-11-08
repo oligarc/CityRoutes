@@ -24,7 +24,7 @@ public class DaoRuta {
 		Conexion miconex = new Conexion();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String query = "SELECT R.NOMBRE,R.IMAGEN,R.DESCRIPCION,R.LINK "
+		String query = "SELECT R.NOMBRE,R.IMAGEN,R.DESCRIPCION,R.LINK,R.ID "
 				+ "FROM RUTA R "
 				+ "JOIN CIUDAD C ON R.CIUDAD=C.ID "
 				+ "WHERE C.ID=?";
@@ -42,6 +42,7 @@ public class DaoRuta {
 				ruta.setImagen(rs.getString("IMAGEN"));
 				ruta.setDescripcion(rs.getString("DESCRIPCION"));
 				ruta.setLink(rs.getString("LINK"));
+				ruta.setId(rs.getInt("ID"));
 				listaRutas.add(ruta);
 				
 			}

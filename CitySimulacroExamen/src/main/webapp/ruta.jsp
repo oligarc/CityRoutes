@@ -44,7 +44,7 @@
                 class="form-select-sm rounded-2" onchange="this.form.submit()"
               >
               <c:forEach items="${listadoCiudadesRuta}" var="ciudad">
-                <option value="${ciudad.idCiudad}">${ciudad.nombreCiudad}</option>
+                <option value="${ciudad.idCiudad}" ${opcionRuta==ciudad.idCiudad?'selected':''}>${ciudad.nombreCiudad}</option>
                 </c:forEach>
               </select>
               </form>
@@ -60,7 +60,7 @@
         </div>
         <div class="row justify-content-center align-items-center">
         <c:forEach items="${listadoRutas}" var="ruta">
-          <div class="col-md-12 col-lg-5 card mt-2 mb-2 me-2">
+          <div class="col-md-12 col-lg-5 card h-100 mt-2 mb-2 me-2">
             <a href="${ruta.link}"> <img
               class="card-img-top img-fluid"
               src="${ruta.imagen}"
@@ -69,6 +69,12 @@
             <div class="card-body">
               <h4 class="card-title">${ruta.nombre}</h4>
               <p class="card-text">${ruta.descripcion}</p>
+              <span class="rating">
+  				<c:forEach var="i" begin="1" end="${ruta.mediaPuntuacion}">
+    			<a href="#" class="sm-star">&#9733;</a>
+  				</c:forEach>
+				</span>
+				<br>
               <span class="rating">
 				<a href="ControllerAdmin?operacion=rating&puntos=1&idRuta=${ruta.id}">&#9733;</a>
 				<a href="ControllerAdmin?operacion=rating&puntos=2&idRuta=${ruta.id}">&#9733;</a>

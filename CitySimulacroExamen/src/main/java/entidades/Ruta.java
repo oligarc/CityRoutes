@@ -9,6 +9,7 @@ public class Ruta {
 	private String descripcion;
 	private String link;
 	private String nombreCiudad; //Unicamente para la lista despegable de los option
+	private double mediaPuntuacion;
 	
 	
 	public Ruta() {
@@ -34,6 +35,18 @@ public class Ruta {
 
 	public void setNombreCiudad(String nombreCiudad) {
 		this.nombreCiudad = nombreCiudad;
+	}
+	
+	
+
+
+	public double getMediaPuntuacion() {
+		return mediaPuntuacion;
+	}
+
+
+	public void setMediaPuntuacion(double mediaPuntuacion) {
+		this.mediaPuntuacion = mediaPuntuacion;
 	}
 
 
@@ -89,8 +102,12 @@ public class Ruta {
 	@Override
 	public String toString() {
 		return "Ruta [id=" + id + ", idCiudad=" + idCiudad + ", nombre=" + nombre + ", imagen=" + imagen
-				+ ", descripcion=" + descripcion + ", link=" + link + ", nombreCiudad=" + nombreCiudad + "]";
+				+ ", descripcion=" + descripcion + ", link=" + link + ", nombreCiudad=" + nombreCiudad
+				+ ", mediaPuntuacion=" + mediaPuntuacion + "]";
 	}
+
+
+	
 
 	
 	

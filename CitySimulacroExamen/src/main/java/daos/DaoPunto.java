@@ -2,6 +2,7 @@ package daos;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import conexiones.Conexion;
@@ -33,5 +34,69 @@ public class DaoPunto {
 			e.printStackTrace();
 		}
 	
+	}
+	
+	public int obtenerSumaPuntos(int idRuta) {
+		
+		int sumaPuntos = 0;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Conexion miconex = new Conexion();
+		
+		String query = "SELECT SUM(PUNTOS) FROM PUNTO WHERE RUTA=?";
+		
+		try {
+			con = miconex.getConexion();
+			ps=con.prepareStatement(query);
+			ps.setInt(1, idRuta);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				sumaPuntos = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return sumaPuntos;
+	}
+	
+	public int contarParaMedia(int idRuta) {
+		
+		int suma = 0;
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		Conexion miconex = new Conexion();
+		
+		String query = "SELECT COUNT(*) FROM PUNTO WHERE RUTA=?";
+		
+		try {
+			con = miconex.getConexion();
+			ps = con.prepareStatement(query);
+			ps.setInt(1, idRuta);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				suma = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		return suma;
 	}
 }

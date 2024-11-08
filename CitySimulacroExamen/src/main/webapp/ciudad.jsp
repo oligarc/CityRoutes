@@ -56,7 +56,7 @@
       <div class="container">
         <div class="row justify-content-center align-items-center">
         <c:forEach items="${listadoCiudades}" var="ciudad">
-          <div class="col-md-12 col-lg-5 card mt-2 mb-2 me-2">
+          <div class="col-md-12 col-lg-5 card h-100 mt-2 mb-2 me-2">
             <a href="${ciudad.link}"> <img
               class="card-img-top img-fluid"
               src="${ciudad.imagen}"
