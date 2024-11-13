@@ -48,6 +48,15 @@ public class DaoCiudad {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+                if(rs!= null) rs.close();
+                if(ps!= null) ps.close();
+                if(con!= null) con.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 		}
     	
     	return listaCiudades;

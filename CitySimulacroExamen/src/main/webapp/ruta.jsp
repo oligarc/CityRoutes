@@ -60,7 +60,8 @@
         </div>
         <div class="row justify-content-center align-items-center">
         <c:forEach items="${listadoRutas}" var="ruta">
-          <div class="col-md-12 col-lg-5 card h-100 mt-2 mb-2 me-2">
+          <div class="col-xl-4 col-md-6 mt-2 mb-2">
+          <div class="card" style="height: 40rem">
             <a href="${ruta.link}"> <img
               class="card-img-top img-fluid"
               src="${ruta.imagen}"
@@ -82,6 +83,7 @@
 				<a href="ControllerAdmin?operacion=rating&puntos=4&idRuta=${ruta.id}">&#9733;</a>
 				<a href="ControllerAdmin?operacion=rating&puntos=5&idRuta=${ruta.id}">&#9733;</a>
 			</span>
+            </div>
             </div>
           </div>
           </c:forEach>

@@ -32,6 +32,14 @@ public class DaoPunto {
 			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+                if(ps!= null) ps.close();
+                if(con!= null) con.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 		}
 	
 	}
@@ -61,6 +69,15 @@ public class DaoPunto {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+                if(rs!= null) rs.close();
+                if(ps!= null) ps.close();
+                if(con!= null) con.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 		}
 		
 		
@@ -93,6 +110,15 @@ public class DaoPunto {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			try {
+                if(rs!= null) rs.close();
+                if(ps!= null) ps.close();
+                if(con!= null) con.close();
+            } catch (SQLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 		}
 		
 		
